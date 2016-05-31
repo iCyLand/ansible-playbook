@@ -1,9 +1,0 @@
----
-- hosts: "{{ hosts }}"
-  gather_facts: no
-  tasks:
-  - raw: "umount /var/spool/postfix"
-    ignore_errors: True
-
-  - service: name=postfix state=restarted
-    ignore_errors: True

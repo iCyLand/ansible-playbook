@@ -1,6 +1,0 @@
----
-- hosts: "{{ hosts }}"
-  sudo: false
-  remote_user: root
-  roles:
-    - "apache-php55-fcgi"

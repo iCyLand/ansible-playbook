@@ -1,5 +1,0 @@
----
-- hosts: "{{ hosts }}"
-  gather_facts: no
-  tasks:
-  - raw: "/root/startworker.sh"

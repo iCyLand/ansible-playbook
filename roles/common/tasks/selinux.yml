@@ -1,0 +1,6 @@
+---
+- selinux: state=disabled
+  when: ansible_os_family == "RedHat"
+  ignore_errors: True
+  tags:
+  - selinux

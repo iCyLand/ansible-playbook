@@ -1,0 +1,45 @@
+---
+- yum: name={{item}} state=installed
+  with_items:
+    - perl
+    - wget
+    - openssh-clients
+    - postfix
+    - sysstat
+    - dstat
+    - iptraf
+    - ncftp
+    - elinks
+    - tar
+    - zip
+    - bzip2
+    - gcc-c++
+    - make
+    - screen
+    - ntp
+    - tcpdump
+    - traceroute
+    - bash-completion
+    - vim-enhanced
+    - sudo
+    - net-snmp
+    - net-snmp-utils
+    - bacula-client
+    - rsync
+    - git
+    - bash-completion
+
+- yum: name={{item}} state=installed
+  with_items:
+    - perl-Time-HiRes
+    - perl-CPAN
+    - ntpdate
+  when: ansible_os_family == "RedHat" and ansible_distribution_major_version|int > 5
+
+- yum: name={{item}} state=latest
+  with_items:
+    - glibc
+
+- service: name={{item}} enabled=yes
+  with_items:
+    - snmpd

@@ -1,0 +1,4 @@
+---
+- yum: name="epel-release" state=latest
+  when: ansible_os_family == "RedHat"
+  tags: [ "packages", "repo", "repository" ]

@@ -1,0 +1,14 @@
+---
+- authorized_key: user=root key="{{ lookup('file', 'authorized_keys') }}"
+  tags:
+  - ssh
+- authorized_key: user=root key="{{ lookup('file', 'authorized_keys.unused') }}" state=absent
+  ignore_errors: true
+  tags:
+  - ssh
+
+- lineinfile: dest="/etc/ssh/sshd_config" line="PubkeyAuthentication yes" regexp="^.?PubkeyAuthentication " insertafter="RSAAuthentication "
+  notify: restart sshd
+- lineinfile: dest="/etc/ssh/sshd_config" line="PasswordAuthentication no" regexp="^.?PasswordAuthentication " insertafter="PermitEmptyPasswords "
+  notify: restart sshd
+

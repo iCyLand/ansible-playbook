@@ -1,0 +1,8 @@
+---
+
+- lineinfile: dest=/root/.bashrc regexp="^export\ HISTTIMEFORMAT.*$" state=present line="export HISTTIMEFORMAT=\"%d/%m/%y %T | \""
+- lineinfile: dest=/root/.bashrc regexp="^export PS1=.*$" state=present line="export PS1='\[\e[00;37m\][\[\e[0m\]\[\e[01;37m\]\u@\h\[\e[0m\]\[\e[00;37m\] \w]\\$ \[\e[0m\]'"
+- copy: src={{ item.src }} dest={{ item.dest }}
+  with_items:
+    - { src: vimrc, dest: /root/.vimrc }
+
